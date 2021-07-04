@@ -13,7 +13,6 @@ import (
 	"io/ioutil"
 	"mime"
 	"net/http"
-	"strings"
 	"time"
 
 	"golang.org/x/oauth2"
@@ -116,8 +115,8 @@ var supportedAlgorithms = map[string]bool{
 // The issuer is the URL identifier for the service. For example: "https://accounts.google.com"
 // or "https://login.salesforce.com".
 func NewProvider(ctx context.Context, issuer string) (*Provider, error) {
-	wellKnown := strings.TrimSuffix(issuer, "/") + "/.well-known/openid-configuration"
-	req, err := http.NewRequest("GET", wellKnown, nil)
+
+	req, err := http.NewRequest("GET", issuer, nil)
 	if err != nil {
 		return nil, err
 	}
