@@ -1,4 +1,4 @@
-module github.com/MicahParks/go-oidc/v3
+module github.com/MicahParks/go-oidc/v4
 
 go 1.14
 
